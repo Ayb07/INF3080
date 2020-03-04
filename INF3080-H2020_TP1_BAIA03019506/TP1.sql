@@ -54,7 +54,7 @@ where codeProfesseur =
                       where GroupeCours.codeSession = '32003'
                       group by codeProfesseur
                       having count(*) <=1
-                    ) and GroupeCours.codeSession = '12004' and GroupeCours.codeSession = '22005'
+                     and GroupeCours.codeSession = '12004' and GroupeCours.codeSession = '22005')
 ;
 
 
