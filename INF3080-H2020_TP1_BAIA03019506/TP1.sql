@@ -54,7 +54,7 @@ where codeProfesseur =
                       where GroupeCours.codeSession = '32003'
                       group by codeProfesseur
                       having count(*) <=1
-                     and GroupeCours.codeSession = '12004' and GroupeCours.codeSession = '22005')
+                      and GroupeCours.codeSession = '12004' and GroupeCours.codeSession = '22005')
 ;
 
 
@@ -106,6 +106,25 @@ where not exists
                  where  P.codeProfesseur = GC.codeProfesseur and
                  GC.sigle like 'INF3080')
                  ;
+
+--Req10
+--Pour chaque code session et sigle d’un cours, retourner le sigle du cours et son titre
+--et la différence entre la meilleure et la plus mauvaise note pour un cours donné.
+SELECT sigle,titre, MAX(I.note) - MIN(I.note) diff
+FROM  Inscription I natural join Cours natural join GroupeCours
+group by sigle, titre
+;
+
+
+--Req11
+--Donner les sigles et titres des cours ayant un nombre maximum d’inscriptions
+--supérieur à 50. Les titres des cours seront triés par ordre ascendant.
+SELECT  distinct GroupeCours.sigle, titre
+FROM    GroupeCours, Cours
+where   GroupeCours.sigle = Cours.sigle and maxInscriptions > 50
+order by titre asc
+;
+
 
 --Req12
 --Donner les codes, noms et prénoms des professeurs ayant enseigné au moins un cours
