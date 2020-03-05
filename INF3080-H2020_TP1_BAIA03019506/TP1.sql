@@ -121,3 +121,6 @@ FROM  Professeur natural join GroupeCours natural join SessionUQAM
 ALTER TABLE inscription DROP COLUMN dateAbandon ;
 ALTER TABLE groupecours DROP COLUMN maxinscriptions;
 SELECT * FROM inscription natural join groupecours;
+
+-- req 15
+-- impossble de supprimer la colonne car elle est une clé parrant. 
