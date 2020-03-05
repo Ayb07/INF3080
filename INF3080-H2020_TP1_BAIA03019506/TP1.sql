@@ -132,3 +132,21 @@ order by titre asc
 SELECT distinct codeProfesseur, nom, prenom
 FROM  Professeur natural join GroupeCours natural join SessionUQAM
 ;
+
+--Req 13
+-- Créer une vue nomée NB_prof_agree qui donne le nombre de professeurs qui est agrege.
+CREATE VIEW NB_prof_agree AS
+Select COUNT(titreprofesseur) as nb_prof_agrege
+From professeur
+Where titreProfesseur = 'profagrege';
+
+
+--Req 14
+-- Supprime les colonnes dateAbandon et maxInscriptions des la tables
+-- concernée. Afficher les contenus des tables concernées.
+ALTER TABLE inscription DROP COLUMN dateAbandon ;
+ALTER TABLE groupecours DROP COLUMN maxinscriptions;
+SELECT * FROM inscription natural join groupecours;
+
+-- req 15
+-- impossble de supprimer la colonne car elle est une clé parrant. 
