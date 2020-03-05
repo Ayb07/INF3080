@@ -113,3 +113,11 @@ where not exists
 SELECT distinct codeProfesseur, nom, prenom
 FROM  Professeur natural join GroupeCours natural join SessionUQAM
 ;
+
+
+--Req 14
+-- Supprime les colonnes dateAbandon et maxInscriptions des la tables
+-- concernée. Afficher les contenus des tables concernées.
+ALTER TABLE inscription DROP COLUMN dateAbandon ;
+ALTER TABLE groupecours DROP COLUMN maxinscriptions;
+SELECT * FROM inscription natural join groupecours;
